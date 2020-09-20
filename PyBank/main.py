@@ -6,9 +6,16 @@ import csv
 csvpath = os.path.join( 'Resources','budget_data.csv')
 
 # csv1 = pd.budget_data.csv("first_csv.csv")
+# Create Lists for values
+# date=[]
+# profloss=[]
 
 totalMonths=0
 totalProfLoss=0
+change=0
+changeList = []
+# nextRow=0
+nextRowValue=0
 
 # grandTotal = 0
 
@@ -20,19 +27,48 @@ with open(csvpath,newline='') as csvfile:
 # print(csv_header)
 
     for row in csvreader:
+#         date.append(row[1])
+# print(date)
+
 # print(row[0]+","+row[1])
 # print(row)
-        totalMonths = totalMonths+1
+# totalMonths = len(date)
+# print(totalMonths)
+       
+        totalMonths=totalMonths+1
         totalProfLoss += int(row[1])
+
+
+        nextRow = next(csvreader)
+        nextRowValue += int(row[1])
+        change = nextRowValue-int(row[1])
+        setChange = changeList.append(change)
+
+        
+        # for row in next(csvreader):
+        #     change = (row[1])
+        #     # change = int(row[1])-totalProfLoss
+        #     setChange = changeList.append(change)
+
+        # change = next(csvreader)-int(row[1])
+        # setChange = changeList.append(change)
+#WORKING print(totalMonths)
+
+
+# row=3
+# previousRow = 2
+# If row>=3:
+#     for row in csvreader:
+#         change = row[1]-previousRow[1]
+#         setChange = changeList.append(change)
+
+# print(changeList)
+
+
+#         for next row in csvreader:
+#             change = int(row+1[1])-int(row[1])
+
+        
 print("Total Months: "+ str(totalMonths))
 print("Total: "+ str(totalProfLoss))
-        # if grandTotal.isdigit():
-        #     grandTotal = int(row[1])
-# grandTotal = [sum(row[1])for row in zip(csvreader)]
-# print(index)
-
-# grandTotal = grandTotal+int(row[1])
-
-# print("Total Months: "+ str(totalMonths))
-# print(grandTotal)
-# print(row[0])
+print(changeList)
