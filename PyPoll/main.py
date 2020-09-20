@@ -14,10 +14,10 @@ total_votes=0
 candidate_list = []
 unique_names=[]
 vote_tally=[]
+candidate_dictionary={}
+votes_by_candidate=0
     
     # candidate_votes = 
-
-
     
 with open(csvpath,newline='') as csvfile:
     csvreader = csv.reader(csvfile,delimiter=",")
@@ -30,10 +30,15 @@ with open(csvpath,newline='') as csvfile:
         # if candidate_name in (candidates):
         if (row[2]) not in unique_names:
             unique_names.append(row[2])
-        
-        # 
+
+        if unique_names == (row[2]):
+            votes_by_candidate = votes_by_candidate+1
+            # votes_by_candidate = votes_by_candidate+1
+            candidate_dictionary = {"Name":unique_names,"Vote Tally":votes_by_candidate}
+
 
 print("Total Votes: "+str(total_votes))
 print(unique_names)
+print(candidate_dictionary)
 
 
