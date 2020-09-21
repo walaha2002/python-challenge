@@ -17,6 +17,7 @@ changeList = []
 date=[]
 profloss=[]
 greatestIncrease=[]
+increase=0
 greatestDecrease=[]
 # currentrow = row
 # row=1
@@ -24,6 +25,9 @@ greatestDecrease=[]
 x=0
 y=1
 z=1
+h=1
+i=1
+j=2
 allowance=85
 
 changerecord=[]
@@ -51,9 +55,24 @@ with open(csvpath,newline='') as csvfile:
             changerecord.append(change)
             x=x+1
             y=y+1
-    # print(changerecord)
-            
 
+    # for h in range (allowance):
+# row=2
+    for h in range (allowance):
+        # if changerecord[i] > changerecord[j]:
+        if increase>changerecord[i]:
+            # increase = int(changerecord[i])
+            greatestIncrease=increase
+            # greatestIncrease.append(int(changerecord[i]))
+        else:
+            # greatestIncrease.append(int(changerecord[i]))
+            greatestIncrease=int(changerecord[i])
+            increase=int(changerecord[i])
+            i=i+1
+            # j=j+1
+
+# increase = int(changerecord[i])
+            
     print("Financial Analysis")
     print("-------------------------")
     print("Total Months: "+str(totalMonths))
@@ -65,6 +84,7 @@ with open(csvpath,newline='') as csvfile:
     avgchange=(int(profloss[85])-int(profloss[0]))/85
     print("Average Change: $"+str(avgchange))
     print(changerecord)
+    print(greatestIncrease)
     # print(changerecord[1])
 
         # change = profloss(row+1[1]-int(row[1]))
