@@ -7,20 +7,24 @@ csvpath = os.path.join( 'Resources','budget_data.csv')
 
  # csv1 = pd.budget_data.csv("first_csv.csv")
 # # Create Lists for values
-# # date=[]
-# # profloss=[]
 
 totalMonths=0
 totalProfLoss=0
 change=0
 changeList = []
-nextRow=0
-nextRowValue=0
+# nextRow=0
+# nextRowValue=0
 date=[]
 profloss=[]
 greatestIncrease=[]
 greatestDecrease=[]
+# currentrow = row
+# row=1
+# nextrow=row+1
+x=0
+y=1
 
+changerecord=[]
 # # grandTotal = 0
 
 # # Skip first row when counting total Months
@@ -36,14 +40,38 @@ with open(csvpath,newline='') as csvfile:
         totalProfLoss += int(row[1])
         profloss.append(row[1])
 
+        # if y>x:
+        #     change = (int(profloss[y]))-(int(profloss[x]))
+        #     changerecord.append(change)
+            # x=x+1
+            # y=y+1
+
     print("Financial Analysis")
     print("-------------------------")
     print("Total Months: "+str(totalMonths))
-    print("Total: "+str(totalProfLoss))     
-    # print(profloss[0])
-    # print(profloss[85])
+    print("Total: "+str(totalProfLoss))  
+    print(profloss[x])
+    print(profloss[y])   
+    print(int(profloss[y])-int(profloss[x]))
+    # # print(profloss[85])
     avgchange=(int(profloss[85])-int(profloss[0]))/85
     print("Average Change: $"+str(avgchange))
+    # print(changerecord[1])
+
+        # change = profloss(row+1[1]-int(row[1]))
+        # changerecord.append(change)
+
+        # change = 
+        # changerecord.append(change)
+        # nextrow=nextrow+1
+        # currentrow=currentrow+1
+    # print(changerecord)
+    # for row in csvreader:
+    #     totalMonths=totalMonths+1
+    #     totalProfLoss += int(row[1])
+    #     profloss.append(row[1])
+
+        
 #         profloss.append(row[1])
 # # # print(date)
 
