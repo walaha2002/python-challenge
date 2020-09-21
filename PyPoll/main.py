@@ -51,10 +51,14 @@ with open(csvpath,newline='') as csvfile:
             # votes_by_candidate = votes_by_candidate+1
             # candidate_dictionary = {"Name":unique_names,"Vote Tally":votes_by_candidate}
 
-
+print("Election Results")
+print("-----------------------")
 print("Total Votes: "+str(total_votes))
-# print(unique_names)
-print(candidate_dictionary)
+print("-----------------------")
 print(votes_by_candidate)
+print("-----------------------")
+print("Winner: ")
+
+# print(votes_by_candidate[])
 
 
