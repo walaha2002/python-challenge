@@ -18,7 +18,7 @@ candidate_dictionary=dict()
 votes_by_candidate=dict()
 
 total_votes=total_votes+1
-# percent_votes=vote_tally/total_votes
+#percent_votes=/total_votes
     
     # candidate_votes = 
     
@@ -37,6 +37,7 @@ with open(csvpath,newline='') as csvfile:
             votes_by_candidate[candidate]=0
             
         votes_by_candidate[candidate] = votes_by_candidate[candidate]+1
+        
             # candidate_dictionary["Name"]=unique_names
             # candidate_dictionary["Vote Tally"]=votes_by_candidate
         # for unique_names in (row[2]):
@@ -50,15 +51,15 @@ with open(csvpath,newline='') as csvfile:
 
             # votes_by_candidate = votes_by_candidate+1
             # candidate_dictionary = {"Name":unique_names,"Vote Tally":votes_by_candidate}
-
+max_key = max(votes_by_candidate,key=votes_by_candidate.get)
 print("Election Results")
 print("-----------------------")
 print("Total Votes: "+str(total_votes))
 print("-----------------------")
-print(votes_by_candidate)
+# print(votes_by_candidate)
+print(f'Khan: {votes_by_candidate["Khan"]}')
+print(f'Correy: {votes_by_candidate["Correy"]}')
+print(f'Li: {votes_by_candidate["Li"]}')
+print("O'Tooley: "+ str({votes_by_candidate["O'Tooley"]}))
 print("-----------------------")
-print("Winner: ")
-
-# print(votes_by_candidate[])
-
-
+print("Winner: "+max_key)
