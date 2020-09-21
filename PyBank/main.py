@@ -16,6 +16,10 @@ change=0
 changeList = []
 nextRow=0
 nextRowValue=0
+date=[]
+profloss=[]
+greatestIncrease=[]
+greatestDecrease=[]
 
 # # grandTotal = 0
 
@@ -28,55 +32,71 @@ with open(csvpath,newline='') as csvfile:
 # # print(csv_header)
 
     for row in csvreader:
-# #         date.append(row[1])
-# # print(date)
-
-# # print(row[0]+","+row[1])
-# # print(row)
-# # totalMonths = len(date)
-# # print(totalMonths)
-       
         totalMonths=totalMonths+1
         totalProfLoss += int(row[1])
+        profloss.append(row[1])
+
+    print("Financial Analysis")
+    print("-------------------------")
+    print("Total Months: "+str(totalMonths))
+    print("Total: "+str(totalProfLoss))     
+    # print(profloss[0])
+    # print(profloss[85])
+    avgchange=(int(profloss[85])-int(profloss[0]))/85
+    print("Average Change: $"+str(avgchange))
+#         profloss.append(row[1])
+# # # print(date)
+
+# # # print(row[0]+","+row[1])
+# # # print(row)
+# # # totalMonths = len(date)
+# # # print(totalMonths)
+       
         
-        If row[1] != "":
+
+
+#         monthlychange=totalProfLoss-nextRowValue
+#         # final month-first month/85
+        
+# #         If row[1] != "":
             
 
-        # currentRow = row
+#         # currentRow = row
 
-        # for row in csvreader2:
-        #     nextRow=2
-        #     change = nextRow[1]-currentRow[1]
-        #     setChange=changeList.append(change)
-        #     print(changeList)
+#         # for row in csvreader2:
+#         #     nextRow=2
+#         #     change = nextRow[1]-currentRow[1]
+#         #     setChange=changeList.append(change)
+#         #     print(changeList)
 
-        # 
+#         # 
 
         
-#         # for row in next(csvreader):
-#         #     change = (row[1])
-#         #     # change = int(row[1])-totalProfLoss
-#         #     setChange = changeList.append(change)
+# #         # for row in next(csvreader):
+# #         #     change = (row[1])
+# #         #     # change = int(row[1])-totalProfLoss
+# #         #     setChange = changeList.append(change)
 
-#         # change = next(csvreader)-int(row[1])
-#         # setChange = changeList.append(change)
-# #WORKING print(totalMonths)
+# #         # change = next(csvreader)-int(row[1])
+# #         # setChange = changeList.append(change)
+# # #WORKING print(totalMonths)
 
 
-# # row=3
-# # previousRow = 2
-# # If row>=3:
-# #     for row in csvreader:
-# #         change = row[1]-previousRow[1]
-# #         setChange = changeList.append(change)
+# # # row=3
+# # # previousRow = 2
+# # # If row>=3:
+# # #     for row in csvreader:
+# # #         change = row[1]-previousRow[1]
+# # #         setChange = changeList.append(change)
 
+# # # print(changeList)
+
+
+# # #         for next row in csvreader:
+# # #             change = int(row+1[1])-int(row[1])
+
+        
+# print("Total Months: "+str(totalMonths))
+# print("Total: "+str(totalProfLoss))
+# print(monthlychange)
 # # print(changeList)
-
-
-# #         for next row in csvreader:
-# #             change = int(row+1[1])-int(row[1])
-
-        
-print("Total Months: "+str(totalMonths))
-print("Total: "+str(totalProfLoss))
-# print(changeList)
