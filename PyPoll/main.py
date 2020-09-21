@@ -4,10 +4,18 @@ import csv
 csvpath = os.path.join( 'Resources','election_data.csv')
 
 # Create Function that passes election data
-# def election_results(voter_data):
-#     voter_ID = int(election_data[0])
-#     county = str(election_data[1])
-#     candidate_name = str(election_data[2])
+def print_results():
+    print("Election Results")
+    print("-----------------------")
+    print("Total Votes: "+str(total_votes))
+    print("-----------------------")
+    # print(votes_by_candidate)
+    print(f'Khan: {votes_by_candidate["Khan"]}')
+    print(f'Correy: {votes_by_candidate["Correy"]}')
+    print(f'Li: {votes_by_candidate["Li"]}')
+    print("O'Tooley: "+ str({votes_by_candidate["O'Tooley"]}))
+    print("-----------------------")
+    print("Winner: "+max_key)
 
 # Create calculations that tally votes
 total_votes=0
@@ -52,14 +60,29 @@ with open(csvpath,newline='') as csvfile:
             # votes_by_candidate = votes_by_candidate+1
             # candidate_dictionary = {"Name":unique_names,"Vote Tally":votes_by_candidate}
 max_key = max(votes_by_candidate,key=votes_by_candidate.get)
-print("Election Results")
-print("-----------------------")
-print("Total Votes: "+str(total_votes))
-print("-----------------------")
-# print(votes_by_candidate)
-print(f'Khan: {votes_by_candidate["Khan"]}')
-print(f'Correy: {votes_by_candidate["Correy"]}')
-print(f'Li: {votes_by_candidate["Li"]}')
-print("O'Tooley: "+ str({votes_by_candidate["O'Tooley"]}))
-print("-----------------------")
-print("Winner: "+max_key)
+
+# Prints to terminal
+print_results()
+
+# Specifies the File to write to
+output_file=os.path.join( 'Resources','pyPollResults.csv')
+
+# Open output file
+with open(output_file,"w", newline='') as csvfile:
+    # csvwriter=csv.writer(csvfile,delimiter=',')
+    csvwriter=csv.writer(csvfile,delimiter=',')
+    # csvwriter.writerows([print_results()])
+    # csvwriter.print_results()
+    # writer.print_results()
+    # print_results()
+# print("Election Results")
+# print("-----------------------")
+# print("Total Votes: "+str(total_votes))
+# print("-----------------------")
+# # print(votes_by_candidate)
+# print(f'Khan: {votes_by_candidate["Khan"]}')
+# print(f'Correy: {votes_by_candidate["Correy"]}')
+# print(f'Li: {votes_by_candidate["Li"]}')
+# print("O'Tooley: "+ str({votes_by_candidate["O'Tooley"]}))
+# print("-----------------------")
+# print("Winner: "+max_key)
