@@ -24,7 +24,7 @@ greatestDecrease=[]
 x=0
 y=1
 z=1
-# allowance=85
+allowance=85
 
 changerecord=[]
 # # grandTotal = 0
@@ -42,7 +42,8 @@ with open(csvpath,newline='') as csvfile:
         totalProfLoss += int(row[1])
         profloss.append(row[1])
     
-    for z in profloss:
+    # for z in profloss:
+    for z in range (allowance):
         if y>x:
             # for x in profloss:
             #     for y in profloss:
@@ -50,7 +51,8 @@ with open(csvpath,newline='') as csvfile:
             changerecord.append(change)
             x=x+1
             y=y+1
-            print(changerecord)
+    # print(changerecord)
+            
 
     print("Financial Analysis")
     print("-------------------------")
@@ -58,7 +60,7 @@ with open(csvpath,newline='') as csvfile:
     print("Total: "+str(totalProfLoss))  
     # print(profloss[x])
     # print(profloss[y])   
-    print(int(profloss[y])-int(profloss[x]))
+    # print(int(profloss[y])-int(profloss[x]))
     # # print(profloss[85])
     avgchange=(int(profloss[85])-int(profloss[0]))/85
     print("Average Change: $"+str(avgchange))
