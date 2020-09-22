@@ -9,18 +9,20 @@ csvpath = os.path.join( 'Resources','budget_data.csv')
 # Declaring Variables
 totalMonths=0
 totalProfLoss=0
+
+# Declaring change variable that holds the results from subtracting next row from current row
 change=0
-changeList = []
+
+# Creating lists to hold values for date and profloss
 date=[]
 profloss=[]
 
-increase=0
+# Creating variable that assist with calculating change
 x=0
 y=1
 z=1
-h=1
-i=1
-j=2
+
+# Variable to create limit on # of times to go through For Loop so it keeps checking the If statement right under it 
 allowance=85
 
 # This list holds the profit/loss changes from month to month
@@ -44,7 +46,7 @@ with open(csvpath,newline='') as csvfile:
     csv_header = next(csvreader)
 
     # Reading data in previously opened file to obtain tallies for Total Months and Summing the totals in ProfLoss
-    # Also creating a list for all of the dates
+    # Also creating a list for all of the dates and a list for profloss so I can use it later in a calculation
     for row in csvreader:
         totalMonths=totalMonths+1
         totalProfLoss += int(row[1])
@@ -53,7 +55,6 @@ with open(csvpath,newline='') as csvfile:
     
     # This For Loop and If Statement runs through the entire file and then subtracts the value from the next record 
     # from the current record to calculate the change between each month and then appends the change to a changerecord list
-    # for z in profloss:
     for z in range (allowance):
         if y>x:
             # for x in profloss:
@@ -62,34 +63,41 @@ with open(csvpath,newline='') as csvfile:
             changerecord.append(change)
             x=x+1
             y=y+1
-        # indexes.append(z)
+        
 
     # Retrieves value for max and min change
-    # I Googled this solution
+    # I Googled this solution to get min and max; min(zipper) isn't working because there's a zero value in the change; No time to troubleshoot
     # maxchange = max(changerecord)
     minchange = min(changerecord)
     maxchange=max(zipper)
 
-    # if changerecord >0:
-    #     minchange=min(zipper)
+    
 
-# increase = int(changerecord[i])
+# Below is the calculation for average change using the in the profloss lists
 # https://www.kite.com/python/answers/how-to-limit-a-float-to-two-decimal-places-in-python#:~:text=Use%20round()%20to%20limit,float%20to%20two%20decimal%20places.
     avgchange=(int(profloss[85])-int(profloss[0]))/85
     a_float=avgchange
     limit_float=round(a_float,2)
-            
+    
+    # Print Statements Below        
     print("Financial Analysis")
     print("-------------------------")
     print("Total Months: "+str(totalMonths))
     print("Total:  $"+str(totalProfLoss))  
-  
     print("Average Change: $"+str(limit_float))
     print("Greatest Increase in Profits:  $"+str((maxchange)))
     print("Greatest Decrease in Profits:  $"+str((minchange)))
+
+# Specifies the File to write to
+output_file=os.path.join( 'analysis','pyBankResults.txt')
+
+# Open output file
+with open(output_file,"w") as csvfile:
+    csvwriter=csv.writer(csvfile,delimiter=',')
+    csvwriter.writerow(['Financial Analysis'])
+    csvwriter.writerow(['-------------------------'])
     
-    
-    
+ # Below is a bunch of code I tried that didn't work    
     # 
     # for changerecord in zipper:
     #     print(
