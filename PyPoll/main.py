@@ -91,7 +91,7 @@ with open(output_file,"w") as csvfile:
     csvwriter.writerow([f'Li: {votes_by_candidate["Li"]}'])
     csvwriter.writerow(['O\'Tooley: '+str(votes_by_candidate["O\'Tooley"])])
     csvwriter.writerow(['-----------------------------------'])
-    csvwriter.writerow(['Winner: '+max_key])
+    # csvwriter.writerow(['Winner: '+max_key])
 # output_file.close()
 
 
