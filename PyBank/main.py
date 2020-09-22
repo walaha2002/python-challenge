@@ -31,6 +31,8 @@ j=2
 allowance=85
 
 changerecord=[]
+maxchange=0
+minchange=0
 # # grandTotal = 0
 
 # # Skip first row when counting total Months
@@ -45,6 +47,7 @@ with open(csvpath,newline='') as csvfile:
         totalMonths=totalMonths+1
         totalProfLoss += int(row[1])
         profloss.append(row[1])
+        date.append(row[0])
     
     # for z in profloss:
     for z in range (allowance):
@@ -71,6 +74,9 @@ with open(csvpath,newline='') as csvfile:
             i=i+1
             # j=j+1
 
+    maxchange = max(changerecord)
+    minchange=min(changerecord)
+
 # increase = int(changerecord[i])
             
     print("Financial Analysis")
@@ -83,8 +89,10 @@ with open(csvpath,newline='') as csvfile:
     # # print(profloss[85])
     avgchange=(int(profloss[85])-int(profloss[0]))/85
     print("Average Change: $"+str(avgchange))
-    print(changerecord)
-    print(greatestIncrease)
+    print("Greatest Increase in Profits:  $"+str((maxchange)))
+    print("Greatest Decrease in Profits:  $"+str((minchange)))
+    # print(greatestIncrease)
+    # print(date)
     # print(changerecord[1])
 
         # change = profloss(row+1[1]-int(row[1]))
