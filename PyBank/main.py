@@ -5,24 +5,16 @@ import csv
 # Create Path to CSV file
 csvpath = os.path.join( 'Resources','budget_data.csv')
 
- # csv1 = pd.budget_data.csv("first_csv.csv")
-# # Create Lists for values
 
 # Declaring Variables
 totalMonths=0
 totalProfLoss=0
 change=0
 changeList = []
-# nextRow=0
-# nextRowValue=0
 date=[]
 profloss=[]
-greatestIncrease=[]
+
 increase=0
-greatestDecrease=[]
-# currentrow = row
-# row=1
-# nextrow=row+1
 x=0
 y=1
 z=1
@@ -31,21 +23,25 @@ i=1
 j=2
 allowance=85
 
-changerecord=[]
+# This list holds the profit/loss changes from month to month
+changerecord=[0]
+
+# These 2 variables hold the values for max/min changes from the changerecord list
 maxchange=0
 minchange=0
+
+# Zipping the lists together to try and retrieve the date for the high/low changes
 indexes = [1,2]
 zipper= zip(indexes,changerecord,date)
 
-# # grandTotal = 0
 
-# # Skip first row when counting total Months
+# Skip first row when counting total Months
 
 with open(csvpath,newline='') as csvfile:
     csvreader = csv.reader(csvfile,delimiter=",")
     # csvreader2 = csv.reader(csvfile,delimiter=",")
     csv_header = next(csvreader)
-# # print(csv_header)
+
 
     # Reading data in previously opened file to obtain tallies for Total Months and Summing the totals in ProfLoss
     # Also creating a list for all of the dates
@@ -67,20 +63,7 @@ with open(csvpath,newline='') as csvfile:
             x=x+1
             y=y+1
 
-    # for h in range (allowance):
-# row=2
-    # for h in range (allowance):
-    #     # if changerecord[i] > changerecord[j]:
-    #     if increase>changerecord[i]:
-    #         # increase = int(changerecord[i])
-    #         greatestIncrease=increase
-    #         # greatestIncrease.append(int(changerecord[i]))
-    #     else:
-    #         # greatestIncrease.append(int(changerecord[i]))
-    #         greatestIncrease=int(changerecord[i])
-    #         increase=int(changerecord[i])
-    #         i=i+1
-    #         # j=j+1
+
 
     # Retrieves value for max and min change
     # I Googled this solution
@@ -98,9 +81,25 @@ with open(csvpath,newline='') as csvfile:
     print("Greatest Increase in Profits:  $"+str((maxchange)))
     print("Greatest Decrease in Profits:  $"+str((minchange)))
     
+    # 
     for index,date,changerecord in zipper:
         print(index,date,changerecord)
 
+
+    # for h in range (allowance):
+# row=2
+    # for h in range (allowance):
+    #     # if changerecord[i] > changerecord[j]:
+    #     if increase>changerecord[i]:
+    #         # increase = int(changerecord[i])
+    #         greatestIncrease=increase
+    #         # greatestIncrease.append(int(changerecord[i]))
+    #     else:
+    #         # greatestIncrease.append(int(changerecord[i]))
+    #         greatestIncrease=int(changerecord[i])
+    #         increase=int(changerecord[i])
+    #         i=i+1
+    #         # j=j+1
     # print(date)
     # print(changerecord[1])
 
