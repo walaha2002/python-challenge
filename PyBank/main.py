@@ -74,13 +74,17 @@ with open(csvpath,newline='') as csvfile:
     #     minchange=min(zipper)
 
 # increase = int(changerecord[i])
+# https://www.kite.com/python/answers/how-to-limit-a-float-to-two-decimal-places-in-python#:~:text=Use%20round()%20to%20limit,float%20to%20two%20decimal%20places.
+    avgchange=(int(profloss[85])-int(profloss[0]))/85
+    a_float=avgchange
+    limit_float=round(a_float,2)
             
     print("Financial Analysis")
     print("-------------------------")
     print("Total Months: "+str(totalMonths))
     print("Total:  $"+str(totalProfLoss))  
-    avgchange=(int(profloss[85])-int(profloss[0]))/85
-    print("Average Change: $"+str(avgchange))
+  
+    print("Average Change: $"+str(limit_float))
     print("Greatest Increase in Profits:  $"+str((maxchange)))
     print("Greatest Decrease in Profits:  $"+str((minchange)))
     
