@@ -8,6 +8,7 @@ csvpath = os.path.join( 'Resources','budget_data.csv')
  # csv1 = pd.budget_data.csv("first_csv.csv")
 # # Create Lists for values
 
+# Declaring Variables
 totalMonths=0
 totalProfLoss=0
 change=0
@@ -33,6 +34,9 @@ allowance=85
 changerecord=[]
 maxchange=0
 minchange=0
+indexes = [1,2]
+zipper= zip(indexes,changerecord,date)
+
 # # grandTotal = 0
 
 # # Skip first row when counting total Months
@@ -83,15 +87,14 @@ with open(csvpath,newline='') as csvfile:
     print("-------------------------")
     print("Total Months: "+str(totalMonths))
     print("Total: "+str(totalProfLoss))  
-    # print(profloss[x])
-    # print(profloss[y])   
-    # print(int(profloss[y])-int(profloss[x]))
-    # # print(profloss[85])
     avgchange=(int(profloss[85])-int(profloss[0]))/85
     print("Average Change: $"+str(avgchange))
     print("Greatest Increase in Profits:  $"+str((maxchange)))
     print("Greatest Decrease in Profits:  $"+str((minchange)))
-    # print(greatestIncrease)
+    
+    for index,date,changerecord in zipper:
+        print(index,date,changerecord)
+
     # print(date)
     # print(changerecord[1])
 
