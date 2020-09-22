@@ -16,6 +16,9 @@ def print_results():
     print("O'Tooley: "+ str({votes_by_candidate["O'Tooley"]}))
     print("-----------------------")
     print("Winner: "+max_key)
+    # print(votes_by_candidate)
+    # print(candidate+": "+(votes_by_candidate[0]/total_votes)*100+" ("+ votes_by_candidate[1]+")")
+    print(votes_by_candidate)
 
 # Create calculations that tally votes
 total_votes=0
@@ -23,7 +26,8 @@ candidate_list = []
 unique_names=[]
 vote_tally=[]
 candidate_dictionary=dict()
-votes_by_candidate=dict()
+# votes_by_candidate=dict()
+votes_by_candidate={}
 
 total_votes=total_votes+1
 #percent_votes=/total_votes
@@ -36,15 +40,21 @@ with open(csvpath,newline='') as csvfile:
 
     for row in csvreader:
         total_votes = total_votes+1
-        candidate_list.append(row[2])
+        # candidate_list.append(row[2])
         candidate = row[2]
+        percent=(int(row[0])/int(total_votes))
         
+
         # if candidate_name in (candidates):
         if candidate not in unique_names:
             unique_names.append(candidate)
             votes_by_candidate[candidate]=0
+            # votes_by_candidate[candidate]=(int(row[0])/int(total_votes))
             
+                                 
         votes_by_candidate[candidate] = votes_by_candidate[candidate]+1
+        # votes_by_candidate[percent] = votes_by_candidate[percent]+1
+        
         
             # candidate_dictionary["Name"]=unique_names
             # candidate_dictionary["Vote Tally"]=votes_by_candidate
@@ -60,29 +70,39 @@ with open(csvpath,newline='') as csvfile:
             # votes_by_candidate = votes_by_candidate+1
             # candidate_dictionary = {"Name":unique_names,"Vote Tally":votes_by_candidate}
 max_key = max(votes_by_candidate,key=votes_by_candidate.get)
+# max_key = max(votes_by_candidate,key=votes.get)
 
 # Prints to terminal
 print_results()
 
 # Specifies the File to write to
-output_file=os.path.join( 'Resources','pyPollResults.csv')
+output_file=os.path.join( 'Resources','pyPollResults.txt')
 
 # Open output file
-with open(output_file,"w", newline='') as csvfile:
-    # csvwriter=csv.writer(csvfile,delimiter=',')
+# with open(pyPollResults,"w") as file:
+with open(output_file,"w") as csvfile:
     csvwriter=csv.writer(csvfile,delimiter=',')
-    # csvwriter.writerows([print_results()])
-    # csvwriter.print_results()
-    # writer.print_results()
-    # print_results()
-# print("Election Results")
-# print("-----------------------")
-# print("Total Votes: "+str(total_votes))
-# print("-----------------------")
-# # print(votes_by_candidate)
-# print(f'Khan: {votes_by_candidate["Khan"]}')
-# print(f'Correy: {votes_by_candidate["Correy"]}')
-# print(f'Li: {votes_by_candidate["Li"]}')
-# print("O'Tooley: "+ str({votes_by_candidate["O'Tooley"]}))
-# print("-----------------------")
-# print("Winner: "+max_key)
+    csvwriter.writerow(['Election Results'])
+    csvwriter.writerow(['-----------------------------------'])
+    csvwriter.writerow(['Total Votes: '+str(total_votes)])
+    csvwriter.writerow(['-----------------------------------'])
+    csvwriter.writerow([f'Khan: {votes_by_candidate["Khan"]}'])
+    csvwriter.writerow([f'Correy: {votes_by_candidate["Correy"]}'])
+    csvwriter.writerow([f'Li: {votes_by_candidate["Li"]}'])
+    csvwriter.writerow(['O\'Tooley: '+str(votes_by_candidate["O\'Tooley"])])
+    csvwriter.writerow(['-----------------------------------'])
+    csvwriter.writerow(['Winner: '+max_key])
+# output_file.close()
+
+
+    # print("Election Results")
+    # print("-----------------------")
+    # print("Total Votes: "+str(total_votes))
+    # print("-----------------------")
+    # print(f'Khan: {votes_by_candidate["Khan"]}')
+    # print(f'Correy: {votes_by_candidate["Correy"]}')
+    # print(f'Li: {votes_by_candidate["Li"]}')
+    # print("O'Tooley: "+ str({votes_by_candidate["O'Tooley"]}))
+    # print("-----------------------")
+    # print("Winner: "+max_key)
+    # print(votes_by_candidate)
