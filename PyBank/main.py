@@ -47,12 +47,16 @@ with open(csvpath,newline='') as csvfile:
     csv_header = next(csvreader)
 # # print(csv_header)
 
+    # Reading data in previously opened file to obtain tallies for Total Months and Summing the totals in ProfLoss
+    # Also creating a list for all of the dates
     for row in csvreader:
         totalMonths=totalMonths+1
         totalProfLoss += int(row[1])
         profloss.append(row[1])
         date.append(row[0])
     
+    # This For Loop and If Statement runs through the entire file and then subtracts the value from the next record 
+    # from the current record to calculate the change between each month and then appends the change to a changerecord list
     # for z in profloss:
     for z in range (allowance):
         if y>x:
@@ -65,18 +69,18 @@ with open(csvpath,newline='') as csvfile:
 
     # for h in range (allowance):
 # row=2
-    for h in range (allowance):
-        # if changerecord[i] > changerecord[j]:
-        if increase>changerecord[i]:
-            # increase = int(changerecord[i])
-            greatestIncrease=increase
-            # greatestIncrease.append(int(changerecord[i]))
-        else:
-            # greatestIncrease.append(int(changerecord[i]))
-            greatestIncrease=int(changerecord[i])
-            increase=int(changerecord[i])
-            i=i+1
-            # j=j+1
+    # for h in range (allowance):
+    #     # if changerecord[i] > changerecord[j]:
+    #     if increase>changerecord[i]:
+    #         # increase = int(changerecord[i])
+    #         greatestIncrease=increase
+    #         # greatestIncrease.append(int(changerecord[i]))
+    #     else:
+    #         # greatestIncrease.append(int(changerecord[i]))
+    #         greatestIncrease=int(changerecord[i])
+    #         increase=int(changerecord[i])
+    #         i=i+1
+    #         # j=j+1
 
     maxchange = max(changerecord)
     minchange=min(changerecord)
