@@ -32,7 +32,7 @@ minchange=0
 
 # Zipping the lists together to try and retrieve the date for the high/low changes
 indexes = []
-zipper= zip(indexes,changerecord,date)
+zipper= zip(changerecord,date)
 
 
 # Skip first row when counting total Months
@@ -62,12 +62,17 @@ with open(csvpath,newline='') as csvfile:
             changerecord.append(change)
             x=x+1
             y=y+1
-        indexes.append(z)
+        # indexes.append(z)
 
     # Retrieves value for max and min change
     # I Googled this solution
-    maxchange = max(changerecord)
-    minchange=min(changerecord)
+
+    # maxchange = max(changerecord)
+    minchange = min(changerecord)
+    maxchange=max(zipper)
+
+    # if changerecord >0:
+    #     minchange=min(zipper)
 
 # increase = int(changerecord[i])
             
@@ -81,8 +86,16 @@ with open(csvpath,newline='') as csvfile:
     print("Greatest Decrease in Profits:  $"+str((minchange)))
     
     # 
-    for index,date,changerecord in zipper:
-        print(index,date,changerecord)
+    # for changerecord in zipper:
+    #     print(
+        
+        # for date in zipper:
+        # # print(index,date,changerecord)
+        #     if maxchange == changerecord:
+        #         print("Greatest Increase in Profits:  "+date+" ($"+str((maxchange))+")")
+        #     elif minchange == changerecord:
+        #         print("Greatest Decrease in Profits:  "+date+" ($"+str((minchange))+")")
+
 
 
     # for h in range (allowance):
