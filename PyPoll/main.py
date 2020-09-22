@@ -67,7 +67,7 @@ max_key = max(votes_by_candidate,key=votes_by_candidate.get)
 print_results()
 
 # Specifies the File to write to
-output_file=os.path.join( 'Resources','pyPollResults.txt')
+output_file=os.path.join( 'analysis','pyPollResults.txt')
 
 # Open output file
 # I tried to use my print_results function to write to the file so I wouldn't repeat myself but was unable to successfully write a solution
