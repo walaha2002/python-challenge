@@ -12,14 +12,12 @@ def print_results():
     print("Khan: "+ "{:.3%}".format((votes_by_candidate["Khan"])/total_votes) +"% "+"("+str(votes_by_candidate["Khan"])+")")
     print("Correy: "+ "{:.3%}".format((votes_by_candidate["Correy"])/total_votes) +"% "+"("+str(votes_by_candidate["Correy"])+")")
     print("Li: "+ "{:.3%}".format((votes_by_candidate["Li"])/total_votes) +"% "+"("+str(votes_by_candidate["Li"])+")")
-    # print(f'Correy: {votes_by_candidate["Correy"]}')
-    # print(f'Li: {votes_by_candidate["Li"]}')
-    print("O'Tooley: "+ str(votes_by_candidate["O'Tooley"]))
+    print("O'Tooley: "+ "{:.3%}".format((votes_by_candidate["O'Tooley"])/total_votes) +"% "+"("+str(votes_by_candidate["O'Tooley"])+")")
+    # print("O'Tooley: "+ "{:.3%}".format((votes_by_candidate["O'Tooley"]))
     print("-----------------------")
     print("Winner: "+max_key)
     print("-----------------------")
-    # print(votes_by_candidate)
-    # print(candidate+": "+(votes_by_candidate[0]/total_votes)*100+" ("+ votes_by_candidate[1]+")")
+
     
 
 # Create calculations that tally votes
@@ -72,9 +70,9 @@ with open(csvpath,newline='') as csvfile:
             # votes_by_candidate = votes_by_candidate+1
             # candidate_dictionary = {"Name":unique_names,"Vote Tally":votes_by_candidate}
 max_key = max(votes_by_candidate,key=votes_by_candidate.get)
-# max_key = max(votes_by_candidate,key=votes.get)
 
-# Prints to terminal
+
+# Prints to terminal using function
 print_results()
 
 # Specifies the File to write to
