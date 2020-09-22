@@ -31,7 +31,7 @@ maxchange=0
 minchange=0
 
 # Zipping the lists together to try and retrieve the date for the high/low changes
-indexes = [1,2]
+indexes = []
 zipper= zip(indexes,changerecord,date)
 
 
@@ -62,8 +62,7 @@ with open(csvpath,newline='') as csvfile:
             changerecord.append(change)
             x=x+1
             y=y+1
-
-
+        indexes.append(z)
 
     # Retrieves value for max and min change
     # I Googled this solution
