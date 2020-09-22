@@ -31,8 +31,9 @@ maxchange=0
 minchange=0
 
 # Zipping the lists together to try and retrieve the date for the high/low changes
-indexes = []
+# indexes = []
 zipper= zip(changerecord,date)
+# zipper=set(zipper)
 
 
 # Skip first row when counting total Months
@@ -41,7 +42,6 @@ with open(csvpath,newline='') as csvfile:
     csvreader = csv.reader(csvfile,delimiter=",")
     # csvreader2 = csv.reader(csvfile,delimiter=",")
     csv_header = next(csvreader)
-
 
     # Reading data in previously opened file to obtain tallies for Total Months and Summing the totals in ProfLoss
     # Also creating a list for all of the dates
@@ -66,7 +66,6 @@ with open(csvpath,newline='') as csvfile:
 
     # Retrieves value for max and min change
     # I Googled this solution
-
     # maxchange = max(changerecord)
     minchange = min(changerecord)
     maxchange=max(zipper)
@@ -85,12 +84,14 @@ with open(csvpath,newline='') as csvfile:
     print("Greatest Increase in Profits:  $"+str((maxchange)))
     print("Greatest Decrease in Profits:  $"+str((minchange)))
     
+    
+    
     # 
     # for changerecord in zipper:
     #     print(
         
-        # for date in zipper:
-        # # print(index,date,changerecord)
+    
+
         #     if maxchange == changerecord:
         #         print("Greatest Increase in Profits:  "+date+" ($"+str((maxchange))+")")
         #     elif minchange == changerecord:

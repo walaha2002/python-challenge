@@ -61,6 +61,7 @@ with open(csvpath,newline='') as csvfile:
         
         
 # I googled this part to see if there was an easy way to find the max value in a dictionary; it worked perfectly
+# https://www.kite.com/python/answers/how-to-find-the-max-value-in-a-dictionary-in-python
 max_key = max(votes_by_candidate,key=votes_by_candidate.get)
 
 # Prints to terminal using function
