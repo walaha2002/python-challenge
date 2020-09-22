@@ -91,12 +91,18 @@ with open(csvpath,newline='') as csvfile:
 # Specifies the File to write to
 output_file=os.path.join( 'analysis','pyBankResults.txt')
 
-# Open output file
+# Open output file and print to it
 with open(output_file,"w") as csvfile:
     csvwriter=csv.writer(csvfile,delimiter=',')
     csvwriter.writerow(['Financial Analysis'])
     csvwriter.writerow(['-------------------------'])
-    
+    csvwriter.writerow(['Total Months: '+str(totalMonths)])
+    csvwriter.writerow(['Total:  $'+str(totalProfLoss)]) 
+    csvwriter.writerow(['Average Change: $'+str(limit_float)])
+    csvwriter.writerow(['Greatest Increase in Profits:  '+str((maxchange))])
+    csvwriter.writerow(['Greatest Decrease in Profits:  '+str((minchange))])
+
+
  # Below is a bunch of code I tried that didn't work    
     # 
     # for changerecord in zipper:
