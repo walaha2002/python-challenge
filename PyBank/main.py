@@ -82,6 +82,8 @@ with open(csvpath,newline='') as csvfile:
     #         i=i+1
     #         # j=j+1
 
+    # Retrieves value for max and min change
+    # I Googled this solution
     maxchange = max(changerecord)
     minchange=min(changerecord)
 
@@ -90,7 +92,7 @@ with open(csvpath,newline='') as csvfile:
     print("Financial Analysis")
     print("-------------------------")
     print("Total Months: "+str(totalMonths))
-    print("Total: "+str(totalProfLoss))  
+    print("Total:  $"+str(totalProfLoss))  
     avgchange=(int(profloss[85])-int(profloss[0]))/85
     print("Average Change: $"+str(avgchange))
     print("Greatest Increase in Profits:  $"+str((maxchange)))
